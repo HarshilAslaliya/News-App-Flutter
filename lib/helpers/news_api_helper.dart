@@ -12,7 +12,7 @@ class NewsHelper {
   Dio dio = Dio();
 
   // ignore: non_constant_identifier_names
-  String MyApiKey = "b60fc9a303304dd7991af7db872ff028";
+  String MyApiKey = "bfe69eebbd4f48b78f33e3d3fa7fd385";
 
   headlineNews() async {
     Response response = await dio.get(

@@ -34,7 +34,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-
         selectedItemColor: Colors.teal,
         items: const [
           BottomNavigationBarItem(
@@ -69,108 +68,111 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               SizedBox(
                 height: height * 0.05,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Your \nbreifing",
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 35,
+              Expanded(
+                flex: 3,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Your \nbreifing",
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: height * 0.01,
-                        ),
-                        Text(
-                          DateFormat('EEEE, dd MMM').format(DateTime.now()),
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              color: Colors.grey,
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          Text(
+                            DateFormat('EEEE, dd MMM').format(DateTime.now()),
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    GestureDetector(
-                      onTap: () {
-                        Provider.of<ThemeProvider>(context, listen: false)
-                            .changeTheme();
-                      },
-                      child: Container(
-                        height: height * 0.1,
-                        width: width * 0.2,
-                        decoration: BoxDecoration(
-                            color: (Provider.of<ThemeProvider>(context).isDark)
-                                ? Colors.grey[800]
-                                : Colors.grey[200],
-                            shape: BoxShape.circle),
-                        child: Icon(
-                            (Provider.of<ThemeProvider>(context).isDark)
-                                ? Icons.brightness_4_outlined
-                                : Icons.brightness_7_rounded,
-                            color: Colors.amber,
-                            // themeProvider.isDark
-                            //     ? Colors.yellow
-                            // Colors.grey,
-                            size: 40),
+                        ],
                       ),
-                    ),
-                  ],
+                      const Spacer(),
+                      GestureDetector(
+                        onTap: () {
+                          Provider.of<ThemeProvider>(context, listen: false)
+                              .changeTheme();
+                        },
+                        child: Container(
+                          height: height * 0.1,
+                          width: width * 0.2,
+                          decoration: BoxDecoration(
+                              color: (Provider.of<ThemeProvider>(context).isDark)
+                                  ? Colors.grey[800]
+                                  : Colors.grey[200],
+                              shape: BoxShape.circle),
+                          child: Icon(
+                              (Provider.of<ThemeProvider>(context).isDark)
+                                  ? Icons.brightness_4_outlined
+                                  : Icons.brightness_7_rounded,
+                              color: Colors.amber,
+                              // themeProvider.isDark
+                              //     ? Colors.yellow
+                              // Colors.grey,
+                              size: 40),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(
-                height: height * 0.02,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: ButtonsTabBar(
-                  controller: tabController,
-                  backgroundColor: Colors.teal,
-                  unselectedBackgroundColor:
-                      (Provider.of<ThemeProvider>(context).isDark)
-                          ? Colors.grey[800]
-                          : Colors.grey[300],
-                  unselectedLabelStyle: TextStyle(
-                      color: (Provider.of<ThemeProvider>(context).isDark)
-                          ? Colors.white
-                          : Colors.black),
-                  labelStyle: const TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                  tabs: const [
-                    Tab(
-                      text: "   Sports   ",
-                    ),
-                    Tab(
-                      text: " Technology ",
-                    ),
-                    Tab(
-                      text: " Bussiness ",
-                    ),
-                    Tab(
-                      text: "   Health   ",
-                    ),
-                    Tab(
-                      text: " Science ",
-                    ),
-                    Tab(
-                      text: " Entertainment ",
-                    ),
-                  ],
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: ButtonsTabBar(
+                    controller: tabController,
+                    backgroundColor: Colors.teal,
+                    unselectedBackgroundColor:
+                        (Provider.of<ThemeProvider>(context).isDark)
+                            ? Colors.grey[800]
+                            : Colors.grey[300],
+                    unselectedLabelStyle: TextStyle(
+                        color: (Provider.of<ThemeProvider>(context).isDark)
+                            ? Colors.white
+                            : Colors.black),
+                    labelStyle: GoogleFonts.poppins(textStyle:  const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),),
+                    tabs: const [
+                      Tab(
+                        text: "   Sports   ",
+                      ),
+                      Tab(
+                        text: " Technology ",
+                      ),
+                      Tab(
+                        text: " Bussiness ",
+                      ),
+                      Tab(
+                        text: "   Health   ",
+                      ),
+                      Tab(
+                        text: " Science ",
+                      ),
+                      Tab(
+                        text: " Entertainment ",
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(
-                height: height * 0.63311,
-                width: width,
+              Expanded(
+                flex: 10,
                 child: TabBarView(
+                  physics: BouncingScrollPhysics(),
                   controller: tabController,
                   children: Global.category
                       .map(
@@ -184,10 +186,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ],
           ),
-          // (Provider.of<ConnectionProvide>(context).isOffline)
-          //     ? noInternet(context: context)
-          //     : futureBuilder(
-          //     future: NewsHelper.newsHelper.headlineNews()),
           const SearchPage(),
         ],
       ),

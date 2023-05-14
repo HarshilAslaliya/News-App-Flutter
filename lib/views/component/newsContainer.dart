@@ -43,7 +43,7 @@ Widget newsContainer({required News news, required BuildContext context}) {
                   padding: const EdgeInsets.all(7),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                       color: Colors.white,
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(

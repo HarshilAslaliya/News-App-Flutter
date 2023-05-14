@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/providers/news_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../modals/news.dart';
-
 
 class DetailsPage extends StatelessWidget {
   const DetailsPage({Key? key}) : super(key: key);
@@ -15,8 +15,17 @@ class DetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios,
+          ),
+        ),
         title: Text(
           (news!.sourceName == "null") ? "" : news.sourceName,
+          style: GoogleFonts.poppins(),
         ),
       ),
       body: Container(
@@ -27,20 +36,22 @@ class DetailsPage extends StatelessWidget {
               Text(
                 (news.title == "null") ? "" : news.title,
                 style: Theme.of(context).textTheme.titleLarge?.merge(
-                      TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
+                      GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: Colors.teal,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
               ),
               const SizedBox(height: 10),
-              Divider(color: Theme.of(context).colorScheme.primary),
+              Divider(),
               const SizedBox(height: 10),
               Container(
                 height: MediaQuery.of(context).size.height * 0.3,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(15),
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
@@ -52,35 +63,25 @@ class DetailsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              Divider(color: Theme.of(context).colorScheme.primary),
+              Divider(),
               const SizedBox(height: 10),
               Text(
                 (news.description == "null") ? "" : news.description,
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: GoogleFonts.poppins(),
               ),
               const SizedBox(height: 10),
               Text(
                 (news.content == "null") ? "" : news.content,
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: GoogleFonts.poppins(),
               ),
               const SizedBox(height: 10),
-              Divider(color: Theme.of(context).colorScheme.primary),
-              const SizedBox(height: 10),
-              Text(
-                (news.author == "null") ? "" : news.author,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(height: 5),
-              Text((news.publishAtTime == "null") ? "" : news.publishAtTime),
-              const SizedBox(height: 10),
-              Divider(color: Theme.of(context).colorScheme.primary),
+              Divider(),
               const SizedBox(height: 5),
               TextButton(
                 style: TextButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  textStyle: Theme.of(context).textTheme.titleMedium,
-                ),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
+                    textStyle: GoogleFonts.poppins()),
                 onPressed: () {
                   if (news.url != "null") {
                     launchUrl(
@@ -90,7 +91,7 @@ class DetailsPage extends StatelessWidget {
                 },
                 child: const Text("Read more"),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
             ],
           ),
         ),
