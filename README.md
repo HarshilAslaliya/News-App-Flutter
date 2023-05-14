@@ -59,7 +59,7 @@ https://github.com/HarshilAslaliya/News-App-Flutter/assets/121867931/462a2b45-36
 ## 📝 License
 
 Copyright © [Harshil Aslaliya](https://github.com/HarshilAslaliya). <br>
-This project is [MIT](LICENSE) licensed.
+This project is [MIT](LICENSE.md) licensed.
 
 ---
 <div align="center">
